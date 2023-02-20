@@ -4,12 +4,14 @@ const userRouter = require('./routers/user')
 const itemRouter =require('./routers/item')
 const cartRouter = require('./routers/cart')
 const orderRouter = require('./routers/order')
+const morgan = require('morgan')
+require('dotenv').config();
 require('./db/mongoose')
 
 const port = process.env.PORT
 
 const app = express()
-
+app.use(morgan('dev'))
 app.use(express.json())
 app.use(userRouter)
 app.use(itemRouter)
